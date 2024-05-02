@@ -65,7 +65,7 @@ export default function SignUp() {
     });
 
     try {
-      await axios.post('http://localhost:8080/api/v1/users/sendOtp', {
+      await axios.post('https://cosmiclens.onrender.com/api/v1/users/sendOtp', {
         email: data.get('email'),
       });
       setShowOtpForm(true);
@@ -85,14 +85,14 @@ export default function SignUp() {
 
     try {
       await axios
-        .post('http://localhost:8080/api/v1/users/verifyOTP', {
+        .post('https://cosmiclens.onrender.com/api/v1/users/verifyOTP', {
           email: userData.email,
           code: otp,
         })
         .then(async (res) => {
           enqueueSnackbar('Otp verified', { variant: 'success' });
           await axios
-            .post('http://localhost:8080/api/v1/users/createAccount', {
+            .post('https://cosmiclens.onrender.com/api/v1/users/createAccount', {
               fname: userData.fname,
               lname: userData.lname,
               email: userData.email,

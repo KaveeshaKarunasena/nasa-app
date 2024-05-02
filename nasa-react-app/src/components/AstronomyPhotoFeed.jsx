@@ -52,7 +52,7 @@ export default function AstronomyPhotoFeed() {
     try {
       console.log(imageUrl);
       const response = await axios.get(
-        `http://localhost:8080/download-image?imageUrl=${imageUrl}`,
+        `https://cosmiclens.onrender.com/download-image?imageUrl=${imageUrl}`,
         { responseType: 'blob' },
       );
       const url = window.URL.createObjectURL(new Blob([response.data]));

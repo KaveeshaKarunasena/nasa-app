@@ -55,11 +55,11 @@ export function ResetPassword() {
         newPassword: password,
       });
       const res = await axios.get(
-        `http://localhost:8080/api/v1/users/verifyEmail/${email}`,
+        `https://cosmiclens.onrender.com/api/v1/users/verifyEmail/${email}`,
       );
 
       if (res.status === 200) {
-        await axios.post('http://localhost:8080/api/v1/users/sendOtp', {
+        await axios.post('https://cosmiclens.onrender.com/api/v1/users/sendOtp', {
           email: email,
         });
         setShowOtpForm(true);
@@ -80,14 +80,14 @@ export function ResetPassword() {
 
     try {
       await axios
-        .post('http://localhost:8080/api/v1/users/verifyOTP', {
+        .post('https://cosmiclens.onrender.com/api/v1/users/verifyOTP', {
           email: userData.email,
           code: otp,
         })
         .then(async () => {
           enqueueSnackbar('OTP verified', { variant: 'success' });
           await axios
-            .put('http://localhost:8080/api/v1/users/resetPassword', {
+            .put('https://cosmiclens.onrender.com/api/v1/users/resetPassword', {
               email: userData.email,
               newPassword: userData.newPassword,
             })
